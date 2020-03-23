@@ -1,0 +1,104 @@
+# set your user tokens as environment variables, such as ~/.secrets
+# See the README for examples.
+[include]
+  path = .gitconfig.user
+[user]
+  email = crineu@gmail.com
+  name = Crineu Tres
+[commit]
+  template = ~/.gitconfig.commit-template.txt
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = false
+  editor = vim
+[color]
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+[format]
+  pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+[mergetool]
+  prompt = false
+[mergetool "mvimdiff"]
+  cmd="mvim -c 'Gdiff' $MERGED"     # use fugitive.vim for 3-way merge
+  keepbackup=false
+[merge]
+  summary = true
+  verbosity = 1
+  tool = mvimdiff
+[apply]
+  whitespace = nowarn
+[branch]
+  autosetupmerge = true
+[push]
+  # 'git push' will push the current branch to its tracking branch
+  # the usual default is to push all branches
+  default = upstream
+[advice]
+  statusHints = false
+[diff]
+  # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+  # instead of a/b/c/d as prefixes for patches
+  mnemonicprefix = true
+  algorithm = patience
+[rerere]
+  # Remember my merges
+  # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
+  enabled = true
+
+[alias]
+  # add
+  a = add                           # add
+  ap = add -p                       # add interactive
+  chunkyadd = add --patch           # stage commits chunk by chunk
+
+  # via http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
+  snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+  snapshots = !git stash list --grep snapshot
+
+  #via http://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
+  recent-branches = !git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+
+  # branch
+  b = branch -avv                   # branch (verbose)
+
+  # commit
+  c = commit                        # commit
+  ca = commit -am                   # commit all with message
+
+  # switch
+  sw = switch                       # switch
+
+  # restore
+  re = restore                      # restore
+
+  # diff
+  d = diff                          # diff unstaged changes
+  dc = diff --cached                # diff staged changes
+  last = diff HEAD^                 # diff last committed change
+
+  # log
+  l = log --graph --date=short
+  changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+  simple = log --pretty=format:\" * %s\"
+
+  # remote
+  r = remote -v                     # show remotes (verbose)
+
+  # reset
+  uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
+
+  # status
+  s = status                        # status
+  st = status                       # status
+
+  # tag
+  t = tag -n                        # show tags with <n> lines of each tag message

@@ -1,0 +1,7 @@
+# Título do commit, resumido, até 50 colunas >>> |
+
+# Após linha em branco, um texto explicando melhor as mudanças
+# Sempre bom limitar a 72 colunas, ou até aqui - - - - - - - - - - >>> |
+
+# Após mais uma linha em branco, as issues referenciadas pelo commit   |
+#refs #id

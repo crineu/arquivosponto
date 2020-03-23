@@ -6,6 +6,8 @@ Meus arquivos ponto (AKA dotfiles)
 git clone git@github.com:crineu/arquivosponto.git
 cd arquivosponto
 
-stow --dotfiles zsh
+stow --dotfiles --verbose zsh
 chsh -s zsh
+
+stow --dotfiles --verbose gitconfig
 ```
