@@ -6,6 +6,6 @@ Meus arquivos ponto (AKA dotfiles)
 git clone git@github.com:crineu/arquivosponto.git
 cd arquivosponto
 
-stow zsh
+stow --dotfiles zsh
 chsh -s zsh
 ```

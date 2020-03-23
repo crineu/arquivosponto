@@ -1,3 +1,9 @@
+FOR REFERENCE ONLY
+THIS IS A MODIFIED PREZTO
+NO WARRANTIES
+
+---
+
 Prezto — Instantly Awesome Zsh
 ==============================
 
