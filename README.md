@@ -15,6 +15,7 @@ chsh -s zsh
 
 Clona repositório, define o _shell_ como ZSH e cria _aliases_ (incluindo o necessário `stow=stow --dotfiles --verbose`)
 
+
 ### :frog: Gitconfig
 
 Configurações do git, e definição de arquivos padrão:
@@ -26,5 +27,17 @@ Configurações do git, e definição de arquivos padrão:
 
 ```
 stow gitconfig
+```
+
+
+### :monkey: Tmux
+
+Configurações do tmux, e definição de arquivos padrão:
+
+* `~/.tmux.conf.user` configurações pessoais
+
+
+```
+stow tmux
 ```
 
