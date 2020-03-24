@@ -11,7 +11,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/arquivosponto/prezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-alias stow='stow --dotfiles --verbose'
+
+# Show links created
+alias stow='stow --verbose'
 
 # No shared historby between sessions
 unsetopt SHARE_HISTORY

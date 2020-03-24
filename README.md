@@ -9,11 +9,11 @@ cd ~
 git clone git@github.com:crineu/arquivosponto.git
 cd arquivosponto
 
-stow --dotfiles --verbose zsh
+stow --verbose zsh
 chsh -s zsh
 ```
 
-Clona repositório, define o _shell_ como ZSH e cria _aliases_ (incluindo o necessário `stow=stow --dotfiles --verbose`)
+Clona repositório, define o _shell_ como ZSH.
 
 
 ### :frog: Gitconfig
