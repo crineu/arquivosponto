@@ -1,8 +1,8 @@
 Meus arquivos ponto (famosos _dotfiles_)
 
-## :wrench: Instalação
+## :underage: Instalação
 
-Pré-requisito: [GNU Stow](https://www.gnu.org/software/stow/)
+Pré-requisitos: [GNU Stow](https://www.gnu.org/software/stow/) e [Z Shell](http://zsh.sourceforge.net/Doc/Release/Introduction.html)
 
 ```bash
 cd ~
@@ -13,31 +13,72 @@ stow --verbose zsh
 chsh -s zsh
 ```
 
-Clona repositório, define o _shell_ como ZSH.
+Clona repositório, define o _shell_ como ZSH e habilita:
+
+* Prompt deveras bacana
+* Git status na linha de comando
+* Git alias
+    - gba - Mostra branchs e conexões remotas;
+    - gbb - Outro tipo de visualização de branches;
+    - gst - git status
+    - gc  - git commit
+    - glg, gld, glb, glc - distintos tipos de log
+* ZMV!
+    - zmv  'dot-(*)' '.$1'
 
 
-### :frog: Gitconfig
+### :earth_americas: Gitconfig
 
-Configurações do git, e definição de arquivos padrão:
+Várias configurações do git, e definição de arquivos padrão:
 
-* `~/.gitconfig.user` configurações pessoais
+* `~/.gitconfig.user` crie esse arquivo para configurações pessoais 
 * `~/.gitconfig.commit-template.txt` como o nome indica
 * `~/.gitignore` para ignores file
 
 
-```
+```bash
 stow gitconfig
 ```
 
 
-### :monkey: Tmux
+### :earth_africa: Tmux
 
 Configurações do tmux, e definição de arquivos padrão:
 
-* `~/.tmux.conf.user` configurações pessoais
+* `~/.tmux.conf.user` crie esse arquivo para configurações pessoais
+* `CTRL` + `a` como tecla padrão
 
-
-```
+```bash
 stow tmux
 ```
 
+
+---
+
+## :volcano: Remoção completa :volcano:
+
+```bash
+cd ~/arquivosponto
+
+stow -D zsh
+stow -D gitconfig
+stow -D tmux
+
+cd ..
+rm -rf arquivosponto
+```
+
+<!-- :mushroom: -->
+<!-- :gift: -->
+<!-- :earth_asia: -->
+<!-- :new_moon: -->
+<!-- :waxing_crescent_moon: -->
+<!-- :first_quarter_moon: -->
+<!-- :waxing_gibbous_moon: -->
+<!-- :full_moon: -->
+<!-- :waning_gibbous_moon: -->
+<!-- :last_quarter_moon: -->
+<!-- :waning_crescent_moon: -->
+<!-- :last_quarter_moon_with_face: -->
+<!-- :first_quarter_moon_with_face: -->
+<!-- :moon: -->
