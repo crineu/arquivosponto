@@ -66,6 +66,18 @@ stow tmux
 ```
 
 
+### :earth_americas: ASDF
+
+Recomenda-se fortemente a instalação do [ASDF](https://asdf-vm.com/#/core-manage-asdf-vm).
+
+```bash
+stow asdf
+
+asdf plugin-list-all
+asdf plugin-add {ruby, rust, docker, tmux}
+asdf install {ruby, rust, docker, tmux} _version_number
+```
+
 ---
 
 ## :volcano: Remoção completa :volcano:
@@ -76,6 +88,7 @@ cd ~/arquivosponto
 stow -D zsh
 stow -D gitconfig
 stow -D tmux
+stow -D asdf
 
 cd ..
 rm -rf arquivosponto
