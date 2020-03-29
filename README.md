@@ -27,6 +27,19 @@ Clona repositório, define o _shell_ como ZSH e habilita:
     - zmv  'dot-(*)' '.$1'
 
 
+### :earth_asia: Personalizações
+
+Qualquer arquivo `.zsh` colocado na pasta `$HOME/.zsh_extras` será automaticamente _sourced_ quando o login for efetuado.
+
+Exemplo de arquivo para adicionar _aliases_ a comandos docker:
+
+```bash
+arquivo '$HOME/.zsh_extras/docker.zsh'
+
+alias dkls='docker image ls'
+```
+
+
 ### :earth_americas: Gitconfig
 
 Várias configurações do git, e definição de arquivos padrão:
@@ -70,7 +83,6 @@ rm -rf arquivosponto
 
 <!-- :mushroom: -->
 <!-- :gift: -->
-<!-- :earth_asia: -->
 <!-- :new_moon: -->
 <!-- :waxing_crescent_moon: -->
 <!-- :first_quarter_moon: -->

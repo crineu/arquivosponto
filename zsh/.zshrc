@@ -5,6 +5,13 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Custom folder where personal configuration must be added
+if [ -d $HOME/.zsh_extras/ ]; then
+  if [ "$(ls -A $HOME/.zsh_extras/)" ]; then
+    for config_file ($HOME/.zsh_extras/*.zsh) source $config_file
+  fi
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/arquivosponto/prezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/arquivosponto/prezto/init.zsh"
