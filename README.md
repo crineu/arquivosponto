@@ -5,59 +5,50 @@ Meus arquivos ponto (famosos _dotfiles_)
 Pré-requisitos: [GNU Stow](https://www.gnu.org/software/stow/) e [Z Shell](http://zsh.sourceforge.net/Doc/Release/Introduction.html)
 
 ```bash
-cd ~
-git clone git@github.com:crineu/arquivosponto.git
-cd arquivosponto
+git clone git@github.com:crineu/arquivosponto.git ~/arquivosponto
+cd ~/arquivosponto
 
 stow --verbose zsh
-chsh -s zsh
+chsh -s /usr/bin/zsh
 ```
 
 Clona repositório, define o _shell_ como ZSH e habilita:
 
-* Prompt deveras bacana
-* Git status na linha de comando
-* Git alias
-    - gba - Mostra branchs e conexões remotas;
-    - gbb - Outro tipo de visualização de branches;
-    - gst - git status
-    - gc  - git commit
-    - glg, gld, glb, glc - distintos tipos de log
+* Prompt deveras bacana com git status na linha de comando e alias:
+    - `gba`, `gbb`: branchs e conexões remotas;
+    - `gst`, `gsc`: git status, git commit
+    - `glg`, `gld`, `glb`, `glc` - distintos tipos de log
 * ZMV!
-    - zmv  'dot-(*)' '.$1'
+    - `zmv  'batata-(*)' 'banana.$1'` <-- :scream:
 
 
 ### :earth_asia: Personalizações
 
-Qualquer arquivo `.zsh` colocado na pasta `$HOME/.zsh_extras` será automaticamente _sourced_ quando o login for efetuado.
+Qualquer arquivo `.zsh` em `$HOME/.zsh_extras` será automaticamente _sourced_ quando o login for efetuado.
 
-Exemplo de arquivo para adicionar _aliases_ a comandos docker:
+Exemplo: arquivo `$HOME/.zsh_extras/docker.zsh` para adicionar _aliases_ a comandos docker:
 
 ```bash
-arquivo '$HOME/.zsh_extras/docker.zsh'
-
 alias dkls='docker image ls'
 ```
 
 
 ### :earth_americas: Gitconfig
 
-Várias configurações do git, e definição de arquivos padrão:
-
+* `~/.gitconfig` várias configurações do git, e definição de arquivos padrão:
 * `~/.gitconfig.user` crie esse arquivo para configurações pessoais
 * `~/.gitconfig.commit-template.txt` como o nome indica
 * `~/.gitignore` para ignores file
 
-
 ```bash
 stow gitconfig
+git config -l --show-origin  # mostra configurações e origem
 ```
 
 
 ### :earth_africa: Tmux
 
-Configurações do tmux, e definição de arquivos padrão:
-
+* `~/.tmux.conf` configurações do tmux
 * `~/.tmux.conf.user` crie esse arquivo para configurações pessoais
 * `CTRL` + `a` como tecla padrão
 
@@ -66,8 +57,6 @@ stow tmux
 ```
 
 ### :earth_asia: Vim
-
-Configurações do vim, e definição de arquivos padrão:
 
 * `~/.vimrc` configurações do vim
 * `~/.vimrc.before` crie esse arquivo para configurações pessoais
@@ -83,7 +72,7 @@ vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
 
 ### :earth_americas: ASDF
 
-Recomenda-se fortemente a instalação do [ASDF](https://asdf-vm.com/#/core-manage-asdf-vm).
+Recomenda-se a instalação do [ASDF](https://asdf-vm.com/#/core-manage-asdf-vm). Após:
 
 ```bash
 stow asdf
@@ -100,17 +89,16 @@ asdf install {ruby, rust, docker, tmux} _version_number
 ```bash
 cd ~/arquivosponto
 
-stow -D zsh
-stow -D gitconfig
-stow -D tmux
-stow -D asdf
+for folder in */ ; do
+  stow -D -n "$folder"
+done
 
 cd ..
 rm -rf arquivosponto
 ```
 
-<!-- :mushroom: -->
-<!-- :gift: -->
+---
+
 <!-- :new_moon: -->
 <!-- :waxing_crescent_moon: -->
 <!-- :first_quarter_moon: -->
