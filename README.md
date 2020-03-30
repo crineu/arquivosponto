@@ -44,7 +44,7 @@ alias dkls='docker image ls'
 
 Várias configurações do git, e definição de arquivos padrão:
 
-* `~/.gitconfig.user` crie esse arquivo para configurações pessoais 
+* `~/.gitconfig.user` crie esse arquivo para configurações pessoais
 * `~/.gitconfig.commit-template.txt` como o nome indica
 * `~/.gitignore` para ignores file
 
@@ -65,6 +65,21 @@ Configurações do tmux, e definição de arquivos padrão:
 stow tmux
 ```
 
+### :earth_asia: Vim
+
+Configurações do vim, e definição de arquivos padrão:
+
+* `~/.vimrc` configurações do vim
+* `~/.vimrc.before` crie esse arquivo para configurações pessoais
+* plugins recomendado: [NERDTree](https://github.com/preservim/nerdtree) (`CTRL` + `n`)
+
+```bash
+stow vim
+
+# vim versão > 8
+git clone https://github.com/preservim/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
+vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
+```
 
 ### :earth_americas: ASDF
 
