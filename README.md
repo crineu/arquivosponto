@@ -82,6 +82,16 @@ asdf plugin-add {ruby, rust, docker, tmux}
 asdf install {ruby, rust, docker, tmux} _version_number
 ```
 
+### :earth_africa: VS Code
+
+* `~/.config/Code - OSS/User/settings.json`
+* `~/.config/Code - OSS/User/keybindings.json`
+
+```bash
+stow vscode
+```
+
+
 ---
 
 ## :volcano: Remoção completa :volcano:
