@@ -19,9 +19,6 @@ fi
 
 # Customize to your needs...
 
-# Show links created
-alias stow='stow --verbose'
-
 # No shared historby between sessions
 unsetopt SHARE_HISTORY
 setopt NO_SHARE_HISTORY

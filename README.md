@@ -8,7 +8,7 @@ Pré-requisitos: [GNU Stow](https://www.gnu.org/software/stow/) e [Z Shell](http
 git clone git@github.com:crineu/arquivosponto.git ~/arquivosponto
 cd ~/arquivosponto
 
-stow --verbose zsh
+stow zsh
 chsh -s /usr/bin/zsh
 ```
 
