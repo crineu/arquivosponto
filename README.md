@@ -21,16 +21,21 @@ Clona repositório, define o _shell_ como ZSH e habilita:
 * ZMV!
     - `zmv  'batata-(*)' 'banana.$1'` <-- :scream:
 
+#### Ordem de inicialização dos arquivos:
+
+* `.zshenv`: invocado sempre; deve ser conciso e meramente inicializar as variáveis necessárias;
+* `.zlogin`: carregado em _login shells_ após `.zshrc`; compila _zcompdump_ em segundo plano pois é processo lento e feito 1x / login;
+* `.zprofile` : similar a `.zlogin` mas carregado antes de `.zshrc` (`.zprofile` e  `.zshrc` são ignorados em _non-login non-interactive shells - so I learned a trick from Prezto that declares environment variables in _.zprofile_ and uses .zshenv_ to source _.zprofile_ (e.g. .zprofile and .zshenv). This way, non-login non-interactive shells will receive proper variable initialisations).
+* `.zshrc`: carregado em _interactive shells_; contém a parte principal das configurações do ZSH.
+
+
+---
+
 
 ### :earth_asia: Personalizações
 
-Qualquer arquivo `.zsh` em `$HOME/.zsh_extras` será automaticamente _sourced_ quando o login for efetuado.
+Arquivos `.zsh` em `$HOME/.zsh_extras` serão automaticamente _sourced_ quando o login for efetuado.
 
-Exemplo: arquivo `$HOME/.zsh_extras/docker.zsh` para adicionar _aliases_ a comandos docker:
-
-```bash
-alias dkls='docker image ls'
-```
 
 
 ### :earth_americas: Gitconfig
