@@ -56,6 +56,7 @@ git config -l --show-origin  # mostra configurações e origem
 * `~/.tmux.conf` configurações do tmux
 * `~/.tmux.conf.user` crie esse arquivo para configurações pessoais
 * `CTRL` + `a` como tecla padrão
+* `~/bin/tmux_dev_env.sh` exemplo de automatização na abertura do tmux (necessita `~/bin` presente no `$PATH`)
 
 ```bash
 stow tmux
