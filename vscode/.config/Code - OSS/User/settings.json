@@ -9,5 +9,9 @@
     "window.zoomLevel": 0,
     "editor.cursorStyle": "block",
     "files.insertFinalNewline": true,
-    "editor.fontSize": 16
+    "editor.fontSize": 19,
+    "editor.fontFamily": "'Inconsolata-dz for Powerline', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontLigatures": true,
+    "redhat.telemetry.enabled": false,
+    "javascript.suggestionActions.enabled": false
 }
