@@ -1,12 +1,8 @@
 {
     "workbench.startupEditor": "newUntitledFile",
     "files.trimTrailingWhitespace": true,
-    "editor.formatOnPaste": true,
-    "editor.multiCursorModifier": "ctrlCmd",
     "editor.snippetSuggestions": "top",
-    "editor.tabSize": 2,
     "editor.cursorBlinking": "phase",
-    "window.zoomLevel": 0,
     "editor.cursorStyle": "block",
     "files.insertFinalNewline": true,
     "editor.fontSize": 19,
