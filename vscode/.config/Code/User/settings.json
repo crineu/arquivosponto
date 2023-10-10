@@ -1,0 +1,50 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "files.trimTrailingWhitespace": true,
+    "editor.snippetSuggestions": "top",
+    "editor.cursorBlinking": "phase",
+    "editor.cursorStyle": "block",
+    "files.insertFinalNewline": true,
+    "editor.fontSize": 20,
+    "editor.fontLigatures": true,
+    "redhat.telemetry.enabled": false,
+    "javascript.suggestionActions.enabled": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 1,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.rulers": [
+        {
+            "column": 80,
+            "color": "#353525"
+        },
+        100,
+        {
+            "column": 120,
+            "color": "#661566"
+        }
+    ],
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Monokai",
+    "editor.fontFamily": "'Ubuntu Mono', 'Noto Sans Mono', 'monospace'",
+    "typescript.updateImportsOnFileMove.enabled": "always"
+}
