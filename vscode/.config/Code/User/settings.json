@@ -46,5 +46,9 @@
     },
     "workbench.colorTheme": "Monokai",
     "editor.fontFamily": "'Ubuntu Mono', 'Noto Sans Mono', 'monospace'",
-    "typescript.updateImportsOnFileMove.enabled": "always"
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "emmet.includeLanguages": {
+        "erb": "html"
+    },
+    "emmet.preferences": {}
 }
