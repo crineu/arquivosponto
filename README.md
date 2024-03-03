@@ -59,6 +59,15 @@ asdf install {ruby, rust, docker, tmux} _version_number
 Recomenda-se a instalação do [ASDF](https://asdf-vm.com/#/core-manage-asdf-vm).
 
 
+## :hammer: Scripts
+
+```bash
+stow scripts
+```
+
+Scripts úteis ligados em `~/bin`
+
+
 ## :hammer: Tmux
 
 ```bash

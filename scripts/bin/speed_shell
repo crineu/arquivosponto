@@ -1,0 +1,5 @@
+# time [shell] speed_shell
+#
+# time /bin/sh speed_shell
+# time /bin/zsh speed_shell
+for a in `seq 10000`; do ( :; ); done
