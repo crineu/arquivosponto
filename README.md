@@ -68,6 +68,16 @@ stow scripts
 Scripts úteis ligados em `~/bin`
 
 
+## :hammer: Zellij
+
+```bash
+--- asdf install zellij
+stow zellij
+```
+
+* `~/.config/zellij/config/kdl` configurações do Zellij
+
+
 ## :hammer: Tmux
 
 ```bash
