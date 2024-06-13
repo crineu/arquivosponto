@@ -52,8 +52,9 @@ Arquivos `.zsh` em `$HOME/.zsh_extras` serão automaticamente _sourced_ quando o
 ```bash
 stow asdf
 asdf plugin-list-all
-asdf plugin-add {ruby, rust, docker, tmux}
-asdf install {ruby, rust, docker, tmux} _version_number
+asdf plugin-add {ruby, go, zellij, tmux}
+asdf install {ruby, go, zellij, tmux} _version_number
+asdf global {ruby, go, zellij, tmux} _version_number
 ```
 
 Recomenda-se a instalação do [ASDF](https://asdf-vm.com/#/core-manage-asdf-vm).
@@ -78,18 +79,6 @@ stow zellij
 * `~/.config/zellij/config/kdl` configurações do Zellij
 
 
-## :hammer: Tmux
-
-```bash
-stow tmux
-```
-
-* `~/.tmux.conf` configurações do tmux
-* `~/.tmux.conf.user` crie esse arquivo para configurações pessoais
-* `~/bin/tmux_dev_env.sh` exemplo de automatização ao iniciar tmux (necessita `~/bin` presente no `$PATH`)
-* `CTRL` + `a` como comando padrão
-
-
 ## :hammer: Gitconfig
 
 ```bash
@@ -101,6 +90,7 @@ git config -l --show-origin     # mostra configurações e origem
 * `~/.gitconfig.user` crie esse arquivo para configurações pessoais
 * `~/.gitconfig.commit-template.txt` como o nome indica
 * `~/.gitignore` para ignores file
+
 
 ## :hammer: Vim
 
@@ -123,6 +113,18 @@ stow alacritty
 ```
 
 * `~/.alacritty` configurações padrão do terminal Alacritty
+
+
+## :hammer: Tmux
+
+```bash
+stow tmux
+```
+
+* `~/.tmux.conf` configurações do tmux
+* `~/.tmux.conf.user` crie esse arquivo para configurações pessoais
+* `~/bin/tmux_dev_env.sh` exemplo de automatização ao iniciar tmux (necessita `~/bin` presente no `$PATH`)
+* `CTRL` + `a` como comando padrão
 
 
 ## :hammer: VS Code
