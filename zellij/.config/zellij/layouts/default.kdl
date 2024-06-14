@@ -1,0 +1,29 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+    }
+
+    tab_template name="default-tab" {
+        // the default zellij tab-bar and status bar plugins
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+    }
+
+    default-tab focus=true name="git" cwd="~/setic" {
+        pane name="git pane"
+    }
+    tab name="server" cwd="~/setic" {
+        pane name="dev place"
+    }
+    tab name="btop" cwd="~/setic" {
+        pane name="btop pane"
+    }
+}
