@@ -1,0 +1,10 @@
+[tools]
+lazygit = "0.42.0"
+ripgrep = "latest"
+bat = "latest"
+fd = "latest"
+neovim = "latest"
+git = "latest"
+glow = "latest"
+eza = "0.18.17"
+zellij = "0.40.1"

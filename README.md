@@ -9,17 +9,36 @@ Pré-requisitos:
 ```bash
 git clone git@github.com:crineu/arquivosponto.git ~/arquivosponto
 git clone https://github.com/crineu/arquivosponto ~/arquivosponto
+cd ~/arquivosponto
 stow [nome_do_diretório]
 ```
 
 ---
 
-# Lista de arquivos de configuração
+# Lista de ferramentas recomendadas
+
+## :hammer: Mise-en-place https://mise.jdx.dev/
+
+```bash
+[install mise]
+stow mise
+mise use --global [plugin]@[version]
+mise user --global [ruby zellij lazygit neovim ripgrep bat]@latest
+```
+
+## :hammer: WezTerm https://wezfurlong.org/wezterm/
+
+
+```bash
+stow wezterm
+```
+
+* `~/.wezterm.lua` # configurações, atalhos etc
+
 
 ## :hammer: ZSH
 
-Pré-requisito:
-* [Z Shell](http://zsh.sourceforge.net/Doc/Release/Introduction.html)
+* Install [Z Shell](http://zsh.sourceforge.net/Doc/Release/Introduction.html)
 
 ```bash
 stow zsh
@@ -29,10 +48,7 @@ chsh -s /usr/bin/zsh
 Define o _shell_ como ZSH e habilita:
 
 * Prompt com git status na linha de comando e alias:
-  - `gba`, `gbb`: branchs e conexões remotas;
-  - `gst`, `gsc`: git status, git commit
-  - `glg`, `gld`, `glb`, `glc` - distintos tipos de log
-* ZMV!
+* ZMV
   - `zmv  'batata-(*)' 'banana.$1'` <-- :scream:
 
 ### Ordem de inicialização dos arquivos:
@@ -47,18 +63,6 @@ Define o _shell_ como ZSH e habilita:
 Arquivos `.zsh` em `$HOME/.zsh_extras` serão automaticamente _sourced_ quando o login for efetuado.
 
 
-## :hammer: ASDF
-
-```bash
-stow asdf
-asdf plugin-list-all
-asdf plugin-add {ruby, go, zellij, tmux}
-asdf install {ruby, go, zellij, tmux} _version_number
-asdf global {ruby, go, zellij, tmux} _version_number
-```
-
-Recomenda-se a instalação do [ASDF](https://asdf-vm.com/#/core-manage-asdf-vm).
-
 
 ## :hammer: Scripts
 
@@ -72,7 +76,6 @@ Scripts úteis ligados em `~/bin`
 ## :hammer: Zellij
 
 ```bash
---- asdf install zellij
 stow zellij
 ```
 
@@ -86,45 +89,14 @@ stow gitconfig
 git config -l --show-origin     # mostra configurações e origem
 ```
 
-* `~/.gitconfig` várias configurações do git, e definição de arquivos padrão:
+* `~/.gitconfig` configurações, definição de arquivos padrão e aliases:
+  - `gba`, `gbb`: branchs e conexões remotas;
+  - `gst`, `gsc`: git status, git commit
+  - `glg`, `gld`, `glb`, `glc` - distintos tipos de log
 * `~/.gitconfig.user` crie esse arquivo para configurações pessoais
 * `~/.gitconfig.commit-template.txt` como o nome indica
 * `~/.gitignore` para ignores file
 
-
-## :hammer: Vim
-
-```bash
-stow vim
-# vim versão > 8
-git clone https://github.com/preservim/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
-vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
-```
-
-* `~/.vimrc` configurações do vim
-* `~/.vimrc.before` crie esse arquivo para configurações pessoais
-* plugins recomendado: [NERDTree](https://github.com/preservim/nerdtree) (`CTRL` + `n`)
-
-
-## :hammer: Alacritty
-
-```bash
-stow alacritty
-```
-
-* `~/.alacritty` configurações padrão do terminal Alacritty
-
-
-## :hammer: Tmux
-
-```bash
-stow tmux
-```
-
-* `~/.tmux.conf` configurações do tmux
-* `~/.tmux.conf.user` crie esse arquivo para configurações pessoais
-* `~/bin/tmux_dev_env.sh` exemplo de automatização ao iniciar tmux (necessita `~/bin` presente no `$PATH`)
-* `CTRL` + `a` como comando padrão
 
 
 ## :hammer: VS Code
@@ -135,6 +107,7 @@ stow vscode
 
 * `~/.config/Code - OSS/User/settings.json`
 * `~/.config/Code - OSS/User/keybindings.json`
+
 
 
 ---
@@ -152,3 +125,60 @@ done
 cd ..
 rm -rf arquivosponto
 ```
+
+
+---
+
+# Ferramentas Legadas
+
+## :hammer: ASDF https://asdf-vm.com/#/core-manage-asdf-vm
+
+> Substituído pelo Mise
+
+```bash
+stow asdf
+asdf plugin-list-all
+asdf plugin-add {ruby, go, zellij, tmux}
+asdf install {ruby, go, zellij, tmux} _version_number
+asdf global {ruby, go, zellij, tmux} _version_number
+```
+
+## :hammer: Alacritty
+
+> Substituído pelo WezTerm
+
+```bash
+stow alacritty
+```
+
+* `~/.alacritty` configurações padrão do terminal Alacritty
+
+
+## :hammer: Tmux
+
+> Substituído pelo Zellij
+
+```bash
+stow tmux
+```
+
+* `~/.tmux.conf` configurações do tmux
+* `~/.tmux.conf.user` crie esse arquivo para configurações pessoais
+* `~/bin/tmux_dev_env.sh` exemplo de automatização ao iniciar tmux (necessita `~/bin` presente no `$PATH`)
+* `CTRL` + `a` como comando padrão
+
+
+## :hammer: Vim
+
+> Substituído pelo NeoVIM
+
+```bash
+stow vim
+# vim versão > 8
+git clone https://github.com/preservim/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
+vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
+```
+
+* `~/.vimrc` configurações do vim
+* `~/.vimrc.before` crie esse arquivo para configurações pessoais
+* plugins recomendado: [NERDTree](https://github.com/preservim/nerdtree) (`CTRL` + `n`)
