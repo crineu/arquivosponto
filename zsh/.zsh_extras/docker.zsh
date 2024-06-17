@@ -4,8 +4,6 @@ alias dkls='docker image ls'
 alias dkps='docker container ps -a'
 alias dkvl='docker volume ls'
 
-alias ttt='echo ~'
-
 # running lazydocker portainer hml
 alias portainer-hml='docker \
   --host tcp://150.162.1.72:2376 --tls \
