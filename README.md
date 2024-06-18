@@ -20,7 +20,7 @@ stow [nome_do_diretório]
 ## :hammer: Mise-en-place https://mise.jdx.dev/
 
 ```bash
-[install mise]
+curl https://mise.run | sh
 stow mise
 mise use --global [plugin]@[version]
 mise user --global [ruby zellij lazygit neovim ripgrep bat]@latest
