@@ -1,5 +1,9 @@
+[plugins]
+lazydocker = "https://github.com/comdotlinux/asdf-lazydocker.git"
+
 [tools]
-lazygit = "0.42.0"
+lazydocker = "0.23.3"
+lazygit = "latest"
 ripgrep = "latest"
 bat = "latest"
 fd = "latest"
