@@ -6,6 +6,22 @@ import (
 	"os/exec"
 )
 
+// man stow:
+//
+// -n
+// --no
+//		Do not perform any operations; merely show what would happen.
+// -S
+// --stow
+//		Stow the packages. This is the default action and so can be omitted
+// -D
+// --delete
+//		Unstow the packages rather than installing them.
+// -R
+// --restow
+//		Restow packages (first unstow, then stow again).
+// 		This is useful for pruning obsolete symlinks from the target tree after updating the software in a package.
+
 func StowRemDry(folder string) []string {
 	return runStowCommand("-Dn", folder)
 }
@@ -42,9 +58,9 @@ func runStowCommand(arg string, folder string) []string {
 	scanner := bufio.NewScanner(&out)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if shouldIncludeLine(line) {
-			result = append(result, line)
-		}
+		// if shouldIncludeLine(line) {
+		result = append(result, line)
+		// }
 	}
 	if err := scanner.Err(); err != nil {
 		RaiseErrorAndExit("stow.go:scanner.Err", err)
@@ -54,7 +70,6 @@ func runStowCommand(arg string, folder string) []string {
 }
 
 // shouldIncludeLine filters lines based on custom logic.
-func shouldIncludeLine(line string) bool {
-	// return strings.Contains(line, "a")
-	return true
-}
+// func shouldIncludeLine(line string) bool {
+// 	return strings.Contains(line, "a")
+// }

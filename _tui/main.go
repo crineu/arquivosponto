@@ -132,7 +132,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 			return m, nil
 
-		case "enter":
+		case "i", "enter":
 			i, ok := m.list.SelectedItem().(item)
 			if ok {
 				m.choice = string(i)
@@ -152,8 +152,8 @@ func (m model) View() string {
 		return quitTextStyle.Render("👋 Até mais")
 	}
 	if m.choice != "" {
-		// titleMsg := statusTextStyle.Render(fmt.Sprintf("%s stow output: ", m.choice))
-		titleMsg := ""
+		titleMsg := statusTextStyle.Render(fmt.Sprintf("%s stow output: ", m.choice))
+		// titleMsg := ""
 		outputMsg := stowTextStyle.Render(strings.Join(m.status[:], "\n"))
 
 		return lipgloss.JoinHorizontal(
