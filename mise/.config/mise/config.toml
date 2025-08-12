@@ -4,10 +4,13 @@ ripgrep = "latest"
 bat = "latest"
 fd = "latest"
 neovim = "latest"
-eza = "0.18.17"
-zellij = "0.40.1"
+eza = "latest"
+zellij = "0.43.1"
 usage = "latest"
 glow = "1.5.0"
 go = "1.23.4"
 node = "22.9.0"
 ruby = "3.3.4"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
