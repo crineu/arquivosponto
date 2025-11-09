@@ -17,6 +17,11 @@ config.color_scheme = "Kanagawa (Gogh)"
 config.initial_cols = 152
 config.initial_rows = 38
 
+config.front_end = "Software"
+config.animation_fps = 60
+config.max_fps = 60
+config.enable_wayland = false
+
 config.font_size = 13
 wezterm.font_with_fallback({
 	-- <built-in>, BuiltIn
