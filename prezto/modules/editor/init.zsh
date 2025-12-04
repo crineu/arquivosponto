@@ -200,16 +200,6 @@ function vi-replace  {
 }
 zle -N vi-replace
 
-# Expands .... to ../..
-function expand-dot-to-parent-directory-path {
-  if [[ $LBUFFER = *.. ]]; then
-    LBUFFER+='/..'
-  else
-    LBUFFER+='.'
-  fi
-}
-zle -N expand-dot-to-parent-directory-path
-
 # Displays an indicator when completing.
 function expand-or-complete-with-indicator {
   local indicator
@@ -414,11 +404,6 @@ for keymap in 'emacs' 'viins'; do
   # Complete in the middle of word.
   bindkey -M "$keymap" "$key_info[Control]I" expand-or-complete
 
-  # Expand .... to ../..
-  if zstyle -t ':prezto:module:editor' dot-expansion; then
-    bindkey -M "$keymap" "." expand-dot-to-parent-directory-path
-  fi
-
   # Display an indicator when completing.
   bindkey -M "$keymap" "$key_info[Control]I" \
     expand-or-complete-with-indicator
@@ -432,11 +417,6 @@ done
 
 # Delete key deletes character in vimcmd cmd mode instead of weird default functionality
 bindkey -M vicmd "$key_info[Delete]" delete-char
-
-# Do not expand .... to ../.. during incremental search.
-if zstyle -t ':prezto:module:editor' dot-expansion; then
-  bindkey -M isearch . self-insert 2> /dev/null
-fi
 
 #
 # Layout
