@@ -18,8 +18,8 @@ config.initial_cols = 152
 config.initial_rows = 38
 
 config.front_end = "Software"
-config.animation_fps = 60
-config.max_fps = 60
+config.animation_fps = 90
+config.max_fps = 90
 config.enable_wayland = false
 
 config.font_size = 13
