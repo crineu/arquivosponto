@@ -2,7 +2,6 @@
     "workbench.startupEditor": "newUntitledFile",
     "files.trimTrailingWhitespace": true,
     "editor.snippetSuggestions": "top",
-    "editor.cursorBlinking": "phase",
     "editor.cursorStyle": "block",
     "files.insertFinalNewline": true,
     "editor.fontSize": 20,
@@ -42,7 +41,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.css-language-features"
     },
     "workbench.colorTheme": "Monokai",
     "editor.fontFamily": "'Ubuntu Mono', 'Noto Sans Mono', 'monospace'",
@@ -50,5 +49,8 @@
     "emmet.includeLanguages": {
         "erb": "html"
     },
-    "emmet.preferences": {}
+    "emmet.preferences": {},
+    "explorer.autoReveal": false,
+    "editor.cursorBlinking": "phase",
+    "chat.viewSessions.orientation": "stacked"
 }
