@@ -1,3 +1,4 @@
 --dir=.
 --target=${HOME}
+--dotfiles
 --verbose=2

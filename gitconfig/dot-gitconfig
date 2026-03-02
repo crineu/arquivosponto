@@ -3,14 +3,14 @@
 [include]
   path = .gitconfig.user
 [user]
-  email = crineu@gmail.com
+	email = crineu.tres@ufsc.br
   name = Crineu Tres
 [commit]
   template = ~/.gitconfig.commit-template.txt
 [core]
   excludesfile = ~/.gitignore
   autocrlf = false
-  editor = vim
+  editor = nvim
 [color]
   ui = true
 [color "branch"]
