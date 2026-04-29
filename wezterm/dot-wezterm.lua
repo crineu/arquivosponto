@@ -7,17 +7,19 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Catppuccin Frappe"
+-- config.color_scheme = 'Tokyo Night'
+-- config.color_scheme = "GruvboxDark"
 -- config.color_scheme = 'nord'
 -- config.color_scheme = "Kanagawa (Gogh)"
--- config.color_scheme = 'rose-pine'
--- config.color_scheme = 'Tokyo Night'
--- config.color_scheme = 'GruvboxDark'
+-- config.color_scheme = "N0tch2k"
+-- config.color_scheme = "Neutron"
+-- config.color_scheme = "Catppuccin Frappe"
+config.color_scheme = "Railscasts (base16)"
 
 config.initial_cols = 152
 config.initial_rows = 38
 
-config.front_end = "Software"
+config.front_end = "WebGpu"
 config.animation_fps = 90
 config.max_fps = 90
 config.enable_wayland = false

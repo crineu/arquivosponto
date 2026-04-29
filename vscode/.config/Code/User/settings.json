@@ -7,7 +7,7 @@
     "editor.fontSize": 20,
     "editor.fontLigatures": true,
     "redhat.telemetry.enabled": false,
-    "javascript.suggestionActions.enabled": false,
+    "js/ts.suggestionActions.enabled": false,
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
@@ -15,7 +15,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -38,19 +38,29 @@
         }
     ],
     "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
     "[css]": {
         "editor.defaultFormatter": "vscode.css-language-features"
     },
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "Dark+",
     "editor.fontFamily": "'Ubuntu Mono', 'Noto Sans Mono', 'monospace'",
-    "typescript.updateImportsOnFileMove.enabled": "always",
+    "js/ts.updateImportsOnFileMove.enabled": "always",
     "emmet.includeLanguages": {
         "erb": "html"
     },
     "emmet.preferences": {},
-    "explorer.autoReveal": false,
-    "editor.cursorBlinking": "phase",
-    "chat.viewSessions.orientation": "stacked"
+    "explorer.autoReveal": "focusNoScroll",
+    "editor.codeActionsOnSave": {},
+    "git.ignoreMissingGitWarning": true,
+    "[csv]": {
+        "editor.inlayHints.maximumLength": 0
+    },
+    "java.jdt.ls.java.home": "/home/crineu/.local/share/mise/installs/java/temurin-25/",
+    "jdk.telemetry.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.renderSideBySide": false,
+    "chat.viewSessions.orientation": "stacked",
+    "claudeCode.preferredLocation": "panel",
+    "go.toolsManagement.autoUpdate": true
 }
