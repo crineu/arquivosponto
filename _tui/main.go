@@ -18,27 +18,7 @@ var (
 	// Pink   = "#FF06B7"
 	// Gray   = "#768676"
 	// Yellow = "#FF9F1C"
-	// Blue   = "#02A9EA"
-	titleStyle = lipgloss.NewStyle().
-			Foreground(lipgloss.Color("#FFFDF5")).
-			Background(lipgloss.Color("#25A065")).
-			Align(lipgloss.Center).
-			Padding(0, 1)
-	itemStyle         = lipgloss.NewStyle().PaddingLeft(4)
-	selectedItemStyle = lipgloss.NewStyle().PaddingLeft(2).Background(lipgloss.Color("#25A065"))
-	installedStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("#25A065")) // green
-	outdatedStyle     = lipgloss.NewStyle().Foreground(lipgloss.Color("#FF9F1C")) // orange
-	notInstalledStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#555555")) // dark gray
-	paginationStyle   = list.DefaultStyles().PaginationStyle.PaddingLeft(4)
-	helpStyle         = list.DefaultStyles().HelpStyle.PaddingLeft(4).PaddingBottom(1)
-	keyHelpStyle      = lipgloss.NewStyle().Foreground(lipgloss.Color("#888888")).PaddingLeft(2)
-	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4)
-	statusTextStyle   = lipgloss.NewStyle().Margin(1, 0, 2, 4).Foreground(lipgloss.Color("#FF9F1C"))
-	stowTextStyle     = lipgloss.NewStyle().Margin(1, 0, 1, 4).Foreground(lipgloss.Color("#767676"))
-	borderStyle       = lipgloss.NewStyle().
-				BorderStyle(lipgloss.RoundedBorder()).
-				BorderForeground(lipgloss.Color("#25A065")).
-				PaddingRight(2)
+	// Key bindings are defined in keys.go
 )
 
 // item represents a stow package with its installation status
