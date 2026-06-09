@@ -32,7 +32,7 @@ func StowAddDry(folder string) []string {
 	return runStowCommand("-Sn", folder)
 }
 func StowAdd(folder string) []string {
-	return runStowCommand("S", folder)
+	return runStowCommand("-S", folder)
 }
 func StowRestowDry(folder string) []string {
 	return runStowCommand("-Rn", folder)
