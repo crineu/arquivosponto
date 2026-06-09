@@ -26,8 +26,12 @@ var (
 			Padding(0, 1)
 	itemStyle         = lipgloss.NewStyle().PaddingLeft(4)
 	selectedItemStyle = lipgloss.NewStyle().PaddingLeft(2).Background(lipgloss.Color("#25A065"))
+	installedStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("#25A065")) // green
+	outdatedStyle     = lipgloss.NewStyle().Foreground(lipgloss.Color("#FF9F1C")) // orange
+	notInstalledStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#555555")) // dark gray
 	paginationStyle   = list.DefaultStyles().PaginationStyle.PaddingLeft(4)
 	helpStyle         = list.DefaultStyles().HelpStyle.PaddingLeft(4).PaddingBottom(1)
+	keyHelpStyle      = lipgloss.NewStyle().Foreground(lipgloss.Color("#888888")).PaddingLeft(2)
 	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4)
 	statusTextStyle   = lipgloss.NewStyle().Margin(1, 0, 2, 4).Foreground(lipgloss.Color("#FF9F1C"))
 	stowTextStyle     = lipgloss.NewStyle().Margin(1, 0, 1, 4).Foreground(lipgloss.Color("#767676"))
@@ -36,6 +40,15 @@ var (
 				BorderForeground(lipgloss.Color("#25A065")).
 				PaddingRight(2)
 )
+
+// item represents a stow package with its installation status
+type item struct {
+	name   string
+	status Status
+}
+
+func (i item) FilterValue() string { return i.name }
+func (i item) String() string      { return i.name }
 
 type listKeyMap struct {
 	stowAdd    key.Binding
@@ -65,10 +78,6 @@ func newListKeyMap() *listKeyMap {
 	}
 }
 
-type item string
-
-func (i item) FilterValue() string { return "" }
-
 type itemDelegate struct{}
 
 func (d itemDelegate) Height() int                             { return 1 }
@@ -80,12 +89,26 @@ func (d itemDelegate) Render(w io.Writer, m list.Model, index int, listItem list
 		return
 	}
 
-	str := fmt.Sprintf("%d. %s", index+1, i)
+	// Determine style based on status
+	var statusStyle lipgloss.Style
+	switch i.status {
+	case Installed:
+		statusStyle = installedStyle
+	case Outdated:
+		statusStyle = outdatedStyle
+	case NotInstalled:
+		statusStyle = notInstalledStyle
+	default:
+		statusStyle = itemStyle
+	}
 
-	fn := itemStyle.Render
+	str := fmt.Sprintf("%s %s", i.status.Emoji(), i.name)
+	rendered := statusStyle.Render(str)
+
+	fn := func(s ...string) string { return rendered }
 	if index == m.Index() {
 		fn = func(s ...string) string {
-			return selectedItemStyle.Render("🌟" + strings.Join(s, "-"))
+			return selectedItemStyle.Render("▶ " + strings.Join(s, "-"))
 		}
 	}
 
@@ -98,9 +121,25 @@ type model struct {
 	choice   string
 	status   []string
 	quitting bool
+	statuses map[string]Status // package name -> stow status
+}
+
+func (m *model) refreshStatus(idx int) {
+	if idx < 0 || idx >= len(m.list.Items()) {
+		return
+	}
+	if it, ok := m.list.Items()[idx].(item); ok {
+		st := CalculateStatus(it.name)
+		it.status = st
+		m.list.SetItem(idx, it)
+	}
 }
 
 func (m model) Init() tea.Cmd {
+	// Calculate all statuses synchronously at startup
+	for i := range m.list.Items() {
+		m.refreshStatus(i)
+	}
 	return nil
 }
 
@@ -119,24 +158,50 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "r":
 			i, ok := m.list.SelectedItem().(item)
 			if ok {
-				m.choice = string(i)
+				m.choice = i.name
 				m.status = StowRestowDry(m.choice)
+				m.refreshStatus(m.list.Index())
 			}
 			return m, nil
 
 		case "d":
 			i, ok := m.list.SelectedItem().(item)
 			if ok {
-				m.choice = string(i)
+				m.choice = i.name
 				m.status = StowRemDry(m.choice)
+				m.refreshStatus(m.list.Index())
 			}
 			return m, nil
 
-		case "i", "enter":
+		case "i", "enter", "p":
 			i, ok := m.list.SelectedItem().(item)
 			if ok {
-				m.choice = string(i)
+				m.choice = i.name
 				m.status = StowAddDry(m.choice)
+				m.refreshStatus(m.list.Index())
+			}
+			return m, nil
+
+		case "esc":
+			m.choice = ""
+			m.status = nil
+			return m, nil
+
+		case "a":
+			i, ok := m.list.SelectedItem().(item)
+			if ok {
+				m.choice = i.name
+				m.status = StowAdd(m.choice)
+				m.refreshStatus(m.list.Index())
+			}
+			return m, nil
+
+		case "x":
+			i, ok := m.list.SelectedItem().(item)
+			if ok {
+				m.choice = i.name
+				m.status = StowRem(m.choice)
+				m.refreshStatus(m.list.Index())
 			}
 			return m, nil
 		}
@@ -147,24 +212,38 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
+func helpView() string {
+	return keyHelpStyle.Render("i/⏎/p preview  •  a apply  •  d preview rm  •  x remove  •  r restow  •  esc close  •  q quit")
+}
+
 func (m model) View() string {
 	if m.quitting {
 		return quitTextStyle.Render("👋 Até mais")
 	}
 	if m.choice != "" {
 		titleMsg := statusTextStyle.Render(fmt.Sprintf("%s stow output: ", m.choice))
-		// titleMsg := ""
 		outputMsg := stowTextStyle.Render(strings.Join(m.status[:], "\n"))
 
-		return lipgloss.JoinHorizontal(
-			lipgloss.Top,
-			borderStyle.Render(m.list.View()),
-			borderStyle.Render(titleMsg+outputMsg))
+		helpLine := helpView()
+		return lipgloss.JoinVertical(
+			lipgloss.Left,
+			lipgloss.JoinHorizontal(
+				lipgloss.Top,
+				borderStyle.Render(m.list.View()),
+				borderStyle.Render(titleMsg+outputMsg)),
+			helpLine)
 	}
-	return borderStyle.Render(m.list.View())
+	helpLine := helpView()
+	return lipgloss.JoinVertical(lipgloss.Left, borderStyle.Render(m.list.View()), helpLine)
 }
 
 func main() {
+	if !stowAvailable {
+		fmt.Println("Error: GNU Stow is not installed or not in PATH.")
+		fmt.Println("Please install stow: sudo apt install stow  (or equivalent for your distro)")
+		os.Exit(1)
+	}
+
 	if os.Getenv("HELP_DEBUG") != "" {
 		f, err := tea.LogToFile("debug.log", "debug")
 		if err != nil {
@@ -178,7 +257,7 @@ func main() {
 
 	tools := ListArquivosPontoTools()
 	for _, tool := range tools {
-		items = append(items, item(tool))
+		items = append(items, item{name: tool, status: NotInstalled})
 	}
 
 	const defaultWidth = 14
@@ -192,7 +271,7 @@ func main() {
 	l.Styles.PaginationStyle = paginationStyle
 	l.Styles.HelpStyle = helpStyle
 
-	m := model{list: l}
+	m := model{list: l, keys: newListKeyMap()}
 
 	if _, err := tea.NewProgram(m).Run(); err != nil {
 		fmt.Println("Error running program:", err)
